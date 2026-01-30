@@ -4,10 +4,9 @@
 #include <stdint.h>
 
 typedef struct student_ {
-
-    unsigned char name[32];
-    uint32_t roll_no;
-    struct student_ *next;
+  unsigned char name[32];
+  uint32_t roll_no;
+  struct student_ *next;
 } student_t;
 
 #endif

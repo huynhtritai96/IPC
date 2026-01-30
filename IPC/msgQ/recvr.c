@@ -8,10 +8,10 @@
 #include <mqueue.h>
 #include <errno.h>
 
-#define MAX_MESSAGES 10
+#define MAX_MESSAGES 10 // <-- 
 #define MAX_MSG_SIZE 256
 #define MSG_BUFFER_SIZE     (MAX_MSG_SIZE + 10)
-#define QUEUE_PERMISSIONS   0660
+#define QUEUE_PERMISSIONS   0660 // <-- priviledges: read and write for owner and group
 
 
 int 
@@ -33,7 +33,7 @@ main(int argc, char **argv){
     attr.mq_msgsize = MAX_MSG_SIZE;
     attr.mq_curmsgs = 0;
 
-    if ((msgq_fd  = mq_open (argv[1], O_RDONLY | O_CREAT, QUEUE_PERMISSIONS, &attr)) == -1) {
+    if ((msgq_fd  = mq_open (argv[1], O_RDONLY | O_CREAT, QUEUE_PERMISSIONS, &attr)) == -1) { // <-- Create or open msgQ for read only. Set permissions and attributes
         printf ("Client: mq_open failed, errno = %d", errno);
         exit (1);
     }
@@ -47,7 +47,7 @@ main(int argc, char **argv){
             printf("Msg recvd msgQ %s\n", argv[1]);
             
             memset(buffer, 0, MSG_BUFFER_SIZE);
-            if (mq_receive (msgq_fd, buffer, MSG_BUFFER_SIZE, NULL) == -1) {
+            if (mq_receive (msgq_fd, buffer, MSG_BUFFER_SIZE, NULL) == -1) { // <-- Receive message from msgQ
                 printf ("mq_receive error, errno = %d\n", errno);
                 exit (1);
             }

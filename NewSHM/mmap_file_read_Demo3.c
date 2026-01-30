@@ -79,3 +79,32 @@ main(int argc, char *argv[]){
     }
     return 0;
 }
+
+
+/*
+Build Steps:
+    touch file_demo2_tai.txt
+    cd ./IPC/NewSHM
+    gcc -o mmap_file_read_Demo3 mmap_file_read_Demo3.c
+    ./mmap_file_read_Demo3 /home/htritai/Downloads/IPC/NewSHM/file_demo3_tai.txt
+
+
+Build Log:
+    None
+
+Run log:
+    {   Z   Bangalore   
+    $ ./mmap_file_read_Demo3
+/home/htritai/Downloads/IPC/NewSHM/file_demo3_tai.txt roll no = 123 marks = 90
+    city = Bangalore
+
+    If File="\n"
+    $ ./mmap_file_read_Demo3
+/home/htritai/Downloads/IPC/NewSHM/file_demo3_tai.txt roll no = 10 marks = 0
+    city =
+
+
+NOTE: *txt need to have data. If empty:
+
+*/
+
